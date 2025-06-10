@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+    <title>Zaloguj się | Strona demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/formpage.css">
+    <link rel="stylesheet" href="css/message.css">
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/style.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/variables.js"></script>
+    <script src="js/login.js"></script>
+</head>
+<body class="changeable">
+    <div class="container-fluid">
+        <h2 class="title">Strona demo</h2>
+
+        <div style="width: 450px;" class="container content">
+        
+            <form id="login-form" action="php/login.php" method="post">
+                <label><h4>Logowanie</h4></label> </br>
+                <label>E-mail: </label>
+                <input type="text" name="input-email" id="input-email" class="form-control" placeholder="Adres e-mail"> </br>
+                <label>Hasło: </label>
+                <input type="password" id="input-password" name="input-password" class="form-control" placeholder="Hasło"> </br>
+                <a href="checkpoint/password-recovery">Nie pamiętam hasła</a>
+        
+                <input type="submit" class="btn btn-primary submit" value="Zaloguj się">
+                <p id="message" class="error message"></p>
+            </form> </br>
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <hr style="flex-grow: 1;">
+                <span style="margin: 0 10px;">lub</span>
+                <hr style="flex-grow: 1;">
+            </div>
+            <div class="redirect"><a href="signup">Stwórz konto</a></div>
+            <div class="redirect" style="margin-top: 40px;"><a href="../index.html"> Powróć do dokumentacji </a></div>
+        </div>
+
+        <div class="footer">
+            <div class="col-sm-3 col-md-2 col-lg-1"> <p> Basic footer </p> </div>
+            <div class="col-sm-3 col-md-2 col-lg-1"> <p> Placeholder </p> </div>
+            <div class="col-sm-3 col-md-2 col-lg-1"> <p> Example </p></div>
+        </div>
+    </div>
+</body>
+</html>

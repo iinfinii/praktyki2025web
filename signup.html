@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+    <title>Dołącz do nas | Strona demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/formpage.css">
+    <link rel="stylesheet" href="css/message.css">
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/style.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/variables.js"></script>
+    <script src="js/register.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
+</head>
+<body class="changeable">
+    <div class="container-fluid">
+        <h2 class="title">Strona demo</h2>
+
+        <div class="container content">
+        
+            <form id="signin-form" action="php/register.php" method="post">
+                <label><h4>Rejestracja</h4></label> </br>
+                <label>E-mail: </label>
+                <input type="text" name="input-email" id="input-email" class="form-control" placeholder="Adres e-mail"> </br>
+                <label>Numer telefonu: </label>
+                <input type="text" name="input-phone-number" id="input-phone-number" class="form-control" placeholder="+48 123 456 678"> </br>
+                <label>Imię: </label>
+                <input type="text" name="input-first-name" id="input-first-name" class="form-control" placeholder="Imię"> </br>
+                <label>Nazwisko: </label>
+                <input type="text" name="input-last-name" id="input-last-name" class="form-control" placeholder="Nazwisko"> </br>
+                <label>Hasło: </label>
+                <input type="password" id="input-password" name="input-password" class="form-control" placeholder="Hasło"> </br>
+                <label>Powtórz hasło: </label>
+                <input type="password" id="input-confirm-password" name="input-confirm-password" class="form-control" placeholder="Hasło"> </br>
+                <div style="padding:0 10px">
+                    <p class="small message secondary no-margin centered"> Rejestrując się wyrażasz zgodę na nasze warunki:
+                        <a href="assets/placeholder.html">Umowę użytkownika</a>, <a href="assets/placeholder.html">Politykę ochrony użytkownika</a>.
+                    </p>
+                </div>
+        
+                <input type="submit" class="btn btn-primary submit" value="Utwórz konto">
+                <p id="message" class="error message"></p>
+            </form> </br>
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <hr style="flex-grow: 1;">
+                <span style="margin: 0 10px;">lub</span>
+                <hr style="flex-grow: 1;">
+            </div>
+            <div class="redirect"><a href="signin">Zaloguj się</a></div>
+
+            
+            <div class="redirect" style="margin-top: 40px;"><a href="../index.html"> Powróć do dokumentacji </a></div>
+        </div>
+
+
+        <div class="footer">
+            <div class="col-sm-3 col-md-2 col-lg-1"> <p> Basic footer </p> </div>
+            <div class="col-sm-3 col-md-2 col-lg-1"> <p> Placeholder </p> </div>
+            <div class="col-sm-3 col-md-2 col-lg-1"> <p> Example </p></div>
+        </div>
+    </div>
+
+</body>
+<script>
+    $(document).ready(function() {
+        $("#input-phone-number").inputmask("+48 999 999 999", {"placeholder": "0"});
+    });
+</script>
+</html>

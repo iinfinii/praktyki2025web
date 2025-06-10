@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+</script>
+<body>
+    <h3 id="hello-message"></h3>
+    <div class="content tertiary wrap">
+        <div class="row">
+            <div class="map" style="width: 80%;">
+                <iframe id="frame" src="../assets/mapapi.html" style="height: 325px; width: 100%;"></iframe>
+            </div>
+            <div class="nav" style="width: 20%;">
+                Opcje:
+                <nav id="buttons"> </br>
+                    <button href="../assets/mapapi.html">Mapa</button> </br>
+                    <button href="../assets/paczkomatapiexample.html">Paczkomat</button>
+                </nav>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function()
+    {
+        fetch_user_data();
+
+        $("#buttons").on("click", "button", function(e)
+        {
+            let $href = $(this).attr("href");
+            $("#frame").attr("src", $href);
+        });
+
+        function fetch_user_data()
+        {
+            $.ajax({
+                url: "../php/session.php",
+                type: "FETCH",
+                success: function(data)
+                {
+                    $user = data['data'];
+                    if($user == null) window.location.href = "index.html";
+
+                    $("#hello-message").html("Witaj, " + $user['first_name'] + " " + $user['last_name']);
+                },
+                error: function(data)
+                {
+                    console.log(data);
+                }
+            });
+        }
+    });
+</script>
+</html>

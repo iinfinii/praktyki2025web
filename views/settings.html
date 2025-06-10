@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/switch.css">
+    <link rel="stylesheet" href="css/settings.css">
+</head>
+<body>
+    <div class="container">
+        <h3> Ustawienia </h3>
+        <div class="row" style="padding-left: 15px;">
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <p> Tryb ciemny </p>
+        </div>
+
+        </br>
+        <button id="save" class="btn btn-primary"> Zapisz zmiany</button>
+        <button id="red" class="btn btn-primary"> Usuń konto </button>
+    </div>
+</body>
+<script>
+    $(document).ready(function()
+    {
+        $dark_mode = localStorage.getItem("theme");
+        if($dark_mode == "dark")
+        {
+            $(".switch input").prop("checked", true);
+        }
+        else
+        {
+            $(".switch input").prop("checked", false);
+        }
+
+        $(".switch input").on("click", function(e)
+        {
+            $dark_mode = $(".switch input").prop("checked");
+            console.log($dark_mode);
+
+            if($dark_mode)
+            {
+                $("#theme").attr("href", "css/colorsheets/dark.css");
+            }
+            else 
+            {
+                $("#theme").attr("href", "css/colorsheets/light.css");
+            }
+        });
+
+        $("#save").on("click", function(e)
+        {
+            $dark_mode = $(".switch input").prop("checked");
+            if($dark_mode) localStorage.setItem("theme", "dark");
+            else localStorage.setItem("theme", "light");
+
+            location.reload();
+        });
+
+        $("#red").on("click", function(e)
+        {
+            display_confirmation_window();
+        });
+    });
+
+    function display_confirmation_window()
+    {
+        $(document.body).append("<div id='confirmation-window'></div>");
+        $("#confirmation-window").css("position", "fixed");
+        $("#confirmation-window").css("top", "0");
+        $("#confirmation-window").css("left", "0");
+        $("#confirmation-window").css("width", "100%");
+        $("#confirmation-window").css("height", "100%");
+        $("#confirmation-window").css("background-color", "rgba(0,0,0,0.5)");
+        $("#confirmation-window").css("display", "flex");
+        $("#confirmation-window").css("justify-content", "center");
+        $("#confirmation-window").css("align-items", "center");
+
+        $("#confirmation-window").load("views/confirm.html");
+        
+    }
+</script>
+</html>

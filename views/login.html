@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<body>
+    <form id="login-form" action="./php/login.php" method="post">
+        <label><h4>Logowanie</h4></label> </br>
+        <label>E-mail: </label>
+        <input type="text" name="input-email" id="input-email" class="form-control" placeholder="E-mail" required> </br>
+        <label>Hasło: </label>
+        <input type="password" id="input-password" name="input-password" class="form-control" placeholder="Hasło" required> </br>
+
+        <input type="submit" class="btn btn-primary">
+    </form> </br>
+    <a href="rejestracja.html">Nie masz jeszcze konta?</a>
+</body>
+<script>
+    $(document).ready(function()
+    {
+        $('#login-form').on("submit", function(e)
+        {
+            e.preventDefault();
+            
+            var $form = $(this);
+            var $actionUrl = $form.attr('action');
+
+            var $mail = $("#input-email").val();
+            var $password = $("#input-password").val();
+
+            if(!MAIL_REGEX.test($mail) || $mail.length > MAX_SIZE_MAIL)
+            {
+                alert("Nieprawidłowy adres e-mail.");
+                return;
+            }
+
+            if(!NO_SPECIAL_SYMBOLS_REGEX.test($password) || $password.length > MAX_SIZE_PASSWORD)
+            {
+                alert("Nieprawidłowe hasło.");
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: $actionUrl,
+                data: $form.serialize(),
+                success: function(data)
+                {
+                    alert(data['message']);
+                    location.reload();
+                }
+            });
+        });
+
+        $("a").on("click", function(e)
+        {
+            e.preventDefault();
+        
+            var $href = $(this).attr('href');
+            if($href != "#")
+            {
+                loadContent("views/" + $href);
+            }
+        });
+    });
+</script>
+</html>

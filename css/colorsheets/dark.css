@@ -1,0 +1,68 @@
+body
+{
+    background-color: #0e0f12;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    body.changeable {
+        background-color: #13141a;
+    }
+}
+
+.header
+{
+    background-color: #13141a;
+}
+
+.header a
+{
+    color: #DDDDDD;
+}
+
+.header a:hover
+{
+    color: white;
+}
+
+.container
+{
+    background-color: #13141a;
+}
+
+.primary
+{
+    background-color: #13141a;
+}
+
+.secondary
+{
+    background-color: #13141a;
+}
+
+.tertiary
+{
+    background-color: #15161c;
+}
+
+.quaternary
+{
+    background-color: #1a1c23;
+}
+
+.form-control
+{
+    background-color: #13141a;
+    color: #dddddd;
+}
+
+.form-control:focus
+{
+    background-color: #15161c;
+    color: white;
+}
+
+hr
+{
+    background-color: #23252f;
+}

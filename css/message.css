@@ -1,0 +1,26 @@
+.message, p
+{
+    margin: 15px 2px;
+    font-size: 15px;
+}
+
+.no-margin
+{
+    margin: 0;
+    padding: 0;
+}
+
+.error
+{
+    color: #f04242;
+}
+
+.small
+{
+    font-size: 16px;
+}
+
+.centered
+{
+    text-align: center;
+}

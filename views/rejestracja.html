@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<body>
+    <form id="register-form" action="./php/register.php" method="post">
+        <label><h4>Rejestracja
+        </h4></label> </br>
+        <label>E-mail: </label> </br>
+        <input type="text" name="input-email" id="input-email" class="form-control" placeholder="E-mail" required> </br>
+        <label>Numer telefonu: </label> </br>
+        <input type="text" name="input-number" id="input-number" class="form-control" placeholder="Numer telefonu" required> </br>
+        <label>Imie: </label> </br>
+        <input type="text" name="input-first-name" id="input-first-name" class="form-control" placeholder="Imie" required> </br>
+        <label>Nazwisko: </label> </br>
+        <input type="text" name="input-last-name" id="input-last-name" class="form-control" placeholder="Nazwisko" required> </br>
+        <label>Hasło: </label> </br>
+        <input type="password" name="input-password" id="input-password" class="form-control" placeholder="Hasło" required> </br>
+
+        <input type="submit" class="btn btn-primary">
+    </form> </br>
+    <a href="login.html">Zaloguj</a>
+</body>
+<script>
+    function failAlert(content)
+    {
+        alert(content);    }
+
+    $(document).ready(function()
+    {
+        $('#register-form').on("submit", function(e)
+        {
+            e.preventDefault();
+            var $form = $(this);
+            var $actionUrl = $form.attr('action');
+            
+            var $mail = $("#input-email").val();
+            var $number = $("#input-number").val();
+            var $first_name = $("#input-first-name").val();
+            var $last_name = $("#input-last-name").val();
+            var $password = $("#input-password").val();
+
+            if(!MAIL_REGEX.test($mail)) return failAlert("Nieprawidłowy adres e-mail");
+            if($mail.length > MAX_SIZE_MAIL) return failAlert("Adres e-mail nie może mieć powyżej 64 znaków");
+            if(!PHONE_NUMBER_REGEX.test($number)) return failAlert("Nieprawidłowy numer telefonu");
+            if($number.length > MAX_SIZE_PHONE_NUMBER) return failAlert("Numer telefonu nie może mieć ponad 20 znaków");
+            if(!LETTERS_ONLY_REGEX.test($first_name)) return failAlert("Wprowadzone imie jest nieprawidłowe");
+            if($first_name.length > MAX_SIZE_FIRST_NAME) return failAlert("Imie nie może mieć ponad 32 znaki");
+            if(!LETTERS_ONLY_REGEX.test($last_name)) return failAlert("Wprowadzone nazwisko jest nieprawidłowe");
+            if($last_name.length > MAX_SIZE_LAST_NAME) return failAlert("Naziwsko nie może mieć ponad 32 znaki");
+            if(!NO_SPECIAL_SYMBOLS_REGEX.test($password)) return failAlert("Hasło nie może zawierać znaków specjalnych.")
+            if($password.length > MAX_SIZE_PASSWORD) return failAlert("Hasło nie może mieć ponad 64 znaki");
+          
+            $.ajax({
+                type: "POST",
+                url: $actionUrl,
+                data: $form.serialize(),
+                success: function(data)
+                {
+                    alert(data['message']);
+                }
+            });
+        });
+
+        $("a").on("click", function(e)
+        {
+            e.preventDefault();
+        
+            var $href = $(this).attr('href');
+            if($href != "#")
+            {
+                loadContent("views/" + $href);
+            }
+        });
+    });
+</script>
+</html>

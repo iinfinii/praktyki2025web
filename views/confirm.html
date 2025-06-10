@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<div class="container tetriary" style="padding: 50px 100px;">
+    <p> Przechodząc dalej zgadzasz się na usunięcie tego konta. Aby przejść dalej wpisz hasło: </p>
+    <input type="password" id="password" class="form-control" placeholder="Hasło" required> </br>
+    <button id="delete" style="background-color:red; color:white;" class="btn btn-primary"> Usuń konto </button>
+    <button id="cancel" class="btn btn-primary"> Anuluj </button>
+</div>
+</body>
+
+<script>
+    $(document).ready(function()
+    {
+        $("#cancel").on("click", function(e)
+        {
+            $("#confirmation-window").remove();
+        });
+
+        $("#delete").on("click", function(e)
+        {
+            $password = $("#password").val();
+            $.ajax({
+                url: "../php/session.php",
+                type: "DELETE",
+                data: {password: $password},
+                success: function(data)
+                {
+                    alert(data['message']);
+                    if(data['status'] == "User deleted.") location.reload();
+                    window.location.reload();
+                },
+                error: function(data)
+                {
+
+                }
+            });
+        });
+    });
+</script>
+</html>
